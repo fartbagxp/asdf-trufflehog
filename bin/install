@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+[ -n "$ASDF_INSTALL_VERSION" ] || (echo >&2 'Missing ASDF_INSTALL_VERSION' && exit 1)
+[ -n "$ASDF_INSTALL_PATH" ] || (echo >&2 'Missing ASDF_INSTALL_PATH' && exit 1)
+ASDF_INSTALL_TYPE=${ASDF_INSTALL_TYPE:-version  }
+
+install() {
+  # shellcheck disable=SC1091
+  source "$(dirname "$0")/download"
+
+  local bin_install_path="$ASDF_INSTALL_PATH/bin"
+  local bin_path="${bin_install_path}/trufflehog"
+
+  mkdir -p "$bin_install_path"
+  download "${ASDF_INSTALL_VERSION}" "${ASDF_INSTALL_PATH}"
+
+  if [[ -f "${ASDF_INSTALL_PATH}/trufflehog" ]]; then
+    mv "${ASDF_INSTALL_PATH}/trufflehog" "${bin_path}"
+  fi
+  if [[ -f "${ASDF_INSTALL_PATH}/trufflehog.exe" ]]; then
+    mv "${ASDF_INSTALL_PATH}/trufflehog.exe" "${bin_path}"
+  fi
+  chmod +x "${bin_path}"
+  rm -rf "${ASDF_INSTALL_PATH}/trufflehog*"
+
+  if [ -x "$ASDF_INSTALL_PATH/bin/trufflehog" ]; then
+    echo "trufflehog $ASDF_INSTALL_VERSION has been installed"
+    exit 0
+  else
+    echo "An error ocurred while installing trufflehog $ASDF_INSTALL_VERSION" 1>&2
+    rm -rf "${ASDF_INSTALL_PATH}/trufflehog*"
+    exit 1
+  fi
+}
+
+install
+
+## For local testing
+# ASDF_INSTALL_TYPE="" ASDF_INSTALL_VERSION="3.63.1" ASDF_INSTALL_PATH="$HOME/.asdf/shims" bash install
