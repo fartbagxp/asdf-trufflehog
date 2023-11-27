@@ -1,36 +1,52 @@
-# asdf-plugin-template [![Build](https://github.com/asdf-vm/asdf-plugin-template/actions/workflows/build.yml/badge.svg)](https://github.com/asdf-vm/asdf-plugin-template/actions/workflows/build.yml) [![Lint](https://github.com/asdf-vm/asdf-plugin-template/actions/workflows/lint.yml/badge.svg)](https://github.com/asdf-vm/asdf-plugin-template/actions/workflows/lint.yml)
+# asdf-trufflehog
 
-This is an [asdf-vm plugin](https://asdf-vm.com/#/plugins-create) template with CI to run [Shellcheck](https://github.com/koalaman/shellcheck) and testing with the [asdf test GitHub Action](https://github.com/asdf-vm/actions).
+![CI](https://github.com/fartbagxp/asdf-trufflehog/workflows/CI/badge.svg)
+![Lint](https://github.com/fartbagxp/asdf-trufflehog/workflows/Lint/badge.svg)
+[![License](https://img.shields.io/badge/License-BSD_0--Clause-orange.svg)](https://choosealicense.com/licenses/0bsd/)
+[![Doc](https://img.shields.io/badge/Doc-asdf-blue)](https://asdf-vm.com/)
 
-## Usage
+## Contents
 
-1. [Generate](https://github.com/asdf-vm/asdf-plugin-template/generate) a new repository based on this template.
-1. Clone it and run `bash setup.bash`.
-1. Force push to your repo: `git push --force-with-lease`.
-1. Adapt your code at the TODO markers. To find the markers: `git grep TODO`.
-1. To develop your plugin further, please read [the plugins create section of the docs](https://asdf-vm.com/plugins/create.html).
+- [Plugin Dependencies](#plugin-dependencies)
+- [Install](#install)
+- [License](#license)
 
->A feature of this plugin-template when hosted on GitHub is the use of [release-please](https://github.com/googleapis/release-please), an automated release tool. It leverages [Conventional Commit messages](https://www.conventionalcommits.org/) to determine semver release type, see the [documentation](https://github.com/googleapis/release-please).
+## Plugin Dependencies
 
-## Contributing
+- `curl` - for trufflehog downloads from upstream releases
 
-Contributions welcome!
+## Install
 
-1. Install `asdf` tools
+Plugin:
 
-    ```shell
-    asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git
-    asdf plugin add shfmt https://github.com/luizm/asdf-shfmt.git
-    asdf install
-    ```
+```bash
+asdf plugin-add trufflehog https://github.com/fartbagxp/asdf-trufflehog
+```
 
-1. Develop!
+trufflehog:
 
-1. Lint & Format
+```bash
+# Show all installable versions
+asdf list-all trufflehog
 
-    ```shell
-    ./scripts/format.bash
-    ./scripts/lint.bash
-    ```
+# Install specific version
+asdf install trufflehog latest
 
-1. PR changes
+# Set a version globally (in your ~/.tool-versions file)
+asdf global trufflehog latest
+
+# Run trufflehog
+trufflehog --version
+> trufflehog 3.63.1
+[...]
+```
+
+## Uninstall
+
+```bash
+asdf plugin remove trufflehog
+```
+
+## License
+
+See [LICENSE](LICENSE).
