@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://choosealicense.com/licenses/mit/)
 [![Doc](https://img.shields.io/badge/Doc-asdf-blue)](https://asdf-vm.com/)
 
+This is a [trufflehog](https://github.com/trufflesecurity/trufflehog) plugin for the [asdf version manager](https://asdf-vm.com/).
+
 ## Contents
 
 - [Plugin Dependencies](#plugin-dependencies)
