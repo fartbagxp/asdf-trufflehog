@@ -16,5 +16,4 @@ function sort_versions() {
 
 versions=$(eval "$cmd" | grep -oE "tag_name\": *\".{1,15}\"," | sed 's/tag_name\": *\"//;s/\",//;s/v//' | sort_versions)
 
-# shellcheck disable=SC2086
-echo $versions
+echo "${versions}"
