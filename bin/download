@@ -60,7 +60,6 @@ download() {
     exit 1
   fi
 
-
   echo "Extracting Trufflehog ${TRUFFLEHOG_VERSION} into ${TRUFFLEHOG_DOWNLOAD_PATH}"
   tar -xzf "${temp_file}" -C "${TRUFFLEHOG_DOWNLOAD_PATH}"
 
