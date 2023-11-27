@@ -50,20 +50,18 @@ download() {
 
   download_url="https://github.com/trufflesecurity/trufflehog/releases/download/v${TRUFFLEHOG_VERSION}/trufflehog_${TRUFFLEHOG_VERSION}_${os_version}_${machine_type}.tar.gz"
 
-  # Download Trufflehog
   echo "Downloading Trufflehog ${TRUFFLEHOG_VERSION} from $download_url"
   temp_file="$TRUFFLEHOG_DOWNLOAD_PATH/trufflehog.tar.gz"
   curl -fsSL -o "$temp_file" "$download_url"
+  curl_exit_code=$?
 
-  # Check if the download was successful
-  if [ $? -ne 0 ]; then
+  if [ "$curl_exit_code" -ne 0 ]; then
     echo "Failed to download Trufflehog."
     exit 1
   fi
 
-  # Untar the downloaded file
-  echo "Extracting Trufflehog ${TRUFFLEHOG_VERSION} into ${TRUFFLEHOG_DOWNLOAD_PATH}"
 
+  echo "Extracting Trufflehog ${TRUFFLEHOG_VERSION} into ${TRUFFLEHOG_DOWNLOAD_PATH}"
   tar -xzf "${temp_file}" -C "${TRUFFLEHOG_DOWNLOAD_PATH}"
 
   ## catch any accidential deletion if somebody set the wrong temp_dir
