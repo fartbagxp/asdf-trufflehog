@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-[ -n "$ASDF_INSTALL_VERSION" ] || (>&2 echo 'Missing ASDF_INSTALL_VERSION' && exit 1)
-[ -n "$ASDF_INSTALL_PATH" ] || (>&2 echo 'Missing ASDF_INSTALL_PATH' && exit 1)
+[ -n "$ASDF_INSTALL_VERSION" ] || (echo >&2 'Missing ASDF_INSTALL_VERSION' && exit 1)
+[ -n "$ASDF_INSTALL_PATH" ] || (echo >&2 'Missing ASDF_INSTALL_PATH' && exit 1)
 ASDF_INSTALL_TYPE=${ASDF_INSTALL_TYPE:-version  }
 
 install() {
@@ -36,3 +36,6 @@ install() {
 }
 
 install
+
+## For local testing
+# ASDF_INSTALL_TYPE="" ASDF_INSTALL_VERSION="3.63.1" ASDF_INSTALL_PATH="$HOME/.asdf/shims" bash install

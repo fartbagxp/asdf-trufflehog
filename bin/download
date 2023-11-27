@@ -11,8 +11,8 @@ download() {
     exit 1
   fi
 
-	local TRUFFLEHOG_VERSION="$1"
-	local TRUFFLEHOG_DOWNLOAD_PATH="${2}"
+  local TRUFFLEHOG_VERSION="$1"
+  local TRUFFLEHOG_DOWNLOAD_PATH="${2}"
 
   os=$(uname -s | tr '[:upper:]' '[:lower:]')
   machine=$(uname -m | tr '[:upper:]' '[:lower:]')
@@ -32,7 +32,7 @@ download() {
   esac
 
   machine_type=""
-  case "$machine" in 
+  case "$machine" in
     "x86_64")
       machine_type="amd64"
       ;;
@@ -42,6 +42,7 @@ download() {
     *)
       echo "Architecture not recognized or not supported."
       exit 1
+      ;;
   esac
 
   echo "Determined operating system to be ${os_version}."
