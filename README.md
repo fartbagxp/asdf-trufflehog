@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/fartbagxp/asdf-trufflehog/workflows/CI/badge.svg)
 ![Lint](https://github.com/fartbagxp/asdf-trufflehog/workflows/Lint/badge.svg)
-[![License](https://img.shields.io/badge/License-BSD_0--Clause-orange.svg)](https://choosealicense.com/licenses/0bsd/)
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://choosealicense.com/licenses/mit/)
 [![Doc](https://img.shields.io/badge/Doc-asdf-blue)](https://asdf-vm.com/)
 
 ## Contents
