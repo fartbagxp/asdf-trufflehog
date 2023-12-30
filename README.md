@@ -16,6 +16,8 @@ This is a [trufflehog](https://github.com/trufflesecurity/trufflehog) plugin for
 ## Plugin Dependencies
 
 - `curl` - for trufflehog downloads from upstream releases
+- `grep` - to pull checksum text from the checksum file
+- `sha256sum`, `sha256` or `shasum` - to verify checksum for integrity check with a file
 
 ## Install
 
@@ -39,7 +41,7 @@ asdf global trufflehog latest
 
 # Run trufflehog
 trufflehog --version
-> trufflehog 3.63.1
+> trufflehog 3.63.7
 [...]
 ```
 
