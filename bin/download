@@ -2,15 +2,15 @@
 
 set -euo pipefail
 
-# different operating systems may have different tool installations to 
+# different operating systems may have different tool installations to
 # run checksums, figure out which one to use to verify checksums.
 _sha256sum() {
   local cmd
-  if command -v sha256sum &> /dev/null; then
+  if command -v sha256sum &>/dev/null; then
     cmd=(sha256sum)
-  elif command -v sha256 &> /dev/null; then
+  elif command -v sha256 &>/dev/null; then
     cmd=(ssha256 -r)
-  elif command -v shasum &> /dev/null; then
+  elif command -v shasum &>/dev/null; then
     cmd=(shasum -a 256)
   else
     echo "ERROR: could not find shasum or sha256sum."
@@ -21,20 +21,20 @@ _sha256sum() {
 }
 
 download() {
-  if command -v curl &> /dev/null; then
+  if command -v curl &>/dev/null; then
     echo "curl already installed"
   else
     echo "curl not installed! Please install curl before proceeding."
     exit 1
   fi
 
-  if command -v grep &> /dev/null; then
+  if command -v grep &>/dev/null; then
     echo "grep already installed"
-    if command -v sha256sum &> /dev/null; then
+    if command -v sha256sum &>/dev/null; then
       echo "sha256sum is installed for verifying checksums"
-    elif command -v sha256 &> /dev/null; then
+    elif command -v sha256 &>/dev/null; then
       echo "sha256 is installed for verifying checksums"
-    elif command -v shasum &> /dev/null; then
+    elif command -v shasum &>/dev/null; then
       echo "shasum is installed for verifying checksums"
     else
       echo "No tool {sha256sum, sha256, shasum} to verify checksum found. Install one of the following before proceeding."
