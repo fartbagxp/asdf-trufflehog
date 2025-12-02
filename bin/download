@@ -75,7 +75,7 @@ download() {
     "x86_64")
       machine_type="amd64"
       ;;
-    "aarch64")
+    "aarch64" | "arm64")
       machine_type="arm64"
       ;;
     *)
