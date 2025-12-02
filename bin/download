@@ -47,6 +47,12 @@ download() {
   local TRUFFLEHOG_VERSION="$1"
   local TRUFFLEHOG_DOWNLOAD_PATH="${2}"
 
+  # Resolve "latest" to actual version
+  if [ "$TRUFFLEHOG_VERSION" = "latest" ]; then
+    TRUFFLEHOG_VERSION=$("$(dirname "$0")/list-all" | tail -n 1)
+    echo "Resolved 'latest' to version: ${TRUFFLEHOG_VERSION}"
+  fi
+
   os=$(uname -s | tr '[:upper:]' '[:lower:]')
   machine=$(uname -m | tr '[:upper:]' '[:lower:]')
 
