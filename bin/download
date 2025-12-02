@@ -132,5 +132,3 @@ download() {
 
 ## Useful for testing this script locally.
 # download "3.63.7" "./tmp"
-
-download "$ASDF_INSTALL_VERSION" "$ASDF_DOWNLOAD_PATH"
